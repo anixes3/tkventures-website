@@ -402,7 +402,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row md:items-center md:justify-between gap-3 font-display font-bold text-xs text-accent-2">
           <span>info@tkventures.co.in · www.tkventures.co.in</span>
           <span className="text-accent-2">Empowering Minds. Enriching Lives.</span>
-          <span>© 2026 TK Ventures — All Rights Reserved</span>
+          <span>© 2026 TK Ventures, All Rights Reserved</span>
         </div>
       </footer>
     </main>
