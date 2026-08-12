@@ -1,26 +1,101 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --ink: #f5f7fc;
+  --ink-2: #ffffff;
+  --ink-3: #e9eefb;
+  --line: #d6deef;
+  --line-soft: #e3e9f7;
+  --text: #0b1440;
+  --text-muted: #55617e;
+  --accent: #8f6209;
+  --accent-2: #1450c4;
+  --font-display: -apple-system, BlinkMacSystemFont, "SF Pro Display",
+    "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-body: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI",
+    Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas,
+    "Liberation Mono", monospace;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-ink-3: var(--ink-3);
+  --color-line: var(--line);
+  --color-text: var(--text);
+  --color-text-muted: var(--text-muted);
+  --color-accent: var(--accent);
+  --color-accent-2: var(--accent-2);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--ink);
+  color: var(--text);
+  font-family: var(--font-body), Arial, Helvetica, sans-serif;
+  background-image: radial-gradient(var(--line-soft) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+.font-display {
+  font-family: var(--font-display), sans-serif;
+}
+
+.font-mono {
+  font-family: var(--font-mono), monospace;
+}
+
+.sheet-label {
+  font-family: var(--font-display), sans-serif;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--accent-2);
+}
+
+/* Drawing-frame corner ticks, used on cards and panels */
+.blueprint-card {
+  position: relative;
+  border: 1px solid var(--line);
+  background: var(--ink-2);
+}
+
+.blueprint-card::before,
+.blueprint-card::after {
+  content: "";
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  pointer-events: none;
+}
+
+.blueprint-card::before {
+  top: -1px;
+  left: -1px;
+  border-top: 2px solid var(--accent-2);
+  border-left: 2px solid var(--accent-2);
+}
+
+.blueprint-card::after {
+  bottom: -1px;
+  right: -1px;
+  border-bottom: 2px solid var(--accent-2);
+  border-right: 2px solid var(--accent-2);
+}
+
+/* Continuous marquee banner */
+@keyframes marquee {
+  from {
+    transform: translateX(0%);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 40s linear infinite;
 }
